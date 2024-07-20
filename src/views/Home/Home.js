@@ -4,33 +4,28 @@ import axios from 'axios'
 import Articles from '../../components/Articles/Articles'
 import toast from 'react-hot-toast'
 import Navbar from '../../components/navbar/Navbar'
-import News from  './news.png'
+import News from './news.png'
 function Home() {
     const [searchQuery, setSearchQuery] = useState("india")
     const [news, setNews] = useState([])
 
-    const loadNews = async () => {
-        toast.loading("Loading Latest News")
-        toast.dismiss()
-        try {
-            const response = await axios.get(`https://newsapi.org/v2/everything?q=${searchQuery}&from=2024-06-20&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`)
-            setNews(response.data.articles)
-            setTimeout(() => {
-                toast.success("News Loaded Successfully")
-            }, 1000)
-        }
-        catch (error) {
-            toast.error("Failed to Load News. Please Try Again")
-        }
-    }
 
     useEffect(() => {
-        setTimeout(() => {
-            loadNews()
-        }, 1000)
-    }, [])
+        const loadNews = async () => {
+            toast.loading("Loading Latest News")
+            toast.dismiss()
+            try {
+                const response = await axios.get(`https://newsapi.org/v2/everything?q=${searchQuery}&from=2024-06-20&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`)
+                setNews(response.data.articles)
+                setTimeout(() => {
+                    toast.success("News Loaded Successfully")
+                }, 1000)
+            }
+            catch (error) {
+                toast.error("Failed to Load News. Please Try Again")
+            }
+        }
 
-    useEffect(() => {
         setTimeout(() => {
             loadNews()
         }, 1000)
@@ -42,7 +37,7 @@ function Home() {
             <div className='container'>
                 <div className='news-header border-dark border-bottom d-flex justify-content-between'>
                     <span className='name'>NEWS 24/7</span>
-                    <img src={News} alt=''/>
+                    <img src={News} alt='' />
                     <span > <span className='me-1'>Date : </span>
                         {new Date().toLocaleDateString()}
                     </span>
