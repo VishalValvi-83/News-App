@@ -4,7 +4,7 @@ function Articles({ i, author, description, url, content, title, urlToImage, pub
     return (
         <div class="news-card mb-3" key={i}>
             <div class="card-body">
-                <h3 class="card-title fw-bold">{title}</h3>
+                <h4 class="card-title fw-bold">{title}</h4>
                 <p class="card-text fw-medium">{description}<a href={url} target="_blank" rel="noopener noreferrer">Read More</a>
                 </p>
                 <p class="card-text">

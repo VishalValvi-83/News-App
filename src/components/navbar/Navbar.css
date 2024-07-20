@@ -1,0 +1,6 @@
+.navbar-brand{
+    color: brown;
+}
+.navbar-brand:hover{
+    color: red;
+}
