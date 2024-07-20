@@ -2,17 +2,26 @@ import React, { useEffect, useState } from 'react'
 import './Home.css'
 import axios from 'axios'
 import Articles from '../../components/Articles/Articles'
+import toast from 'react-hot-toast'
 function Home() {
     const [news, setNews] = useState([])
 
     const loadNews = async () => {
+        toast.loading("Loading Latest News")
         const response = await axios.get("https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=6e2a48d5e4be43548704866feaf1116f")
-
         setNews(response.data.articles)
 
+        
+        setTimeout(() => {
+            toast.dismiss()
+            toast.success("News Loaded Successfully")
+        }, 1000)
     }
+    
     useEffect(() => {
-        loadNews()
+        setTimeout(() => {
+        loadNews() 
+    }, 1000)
     }, [])
 
 
