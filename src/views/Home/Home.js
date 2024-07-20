@@ -3,6 +3,7 @@ import './Home.css'
 import axios from 'axios'
 import Articles from '../../components/Articles/Articles'
 import toast from 'react-hot-toast'
+import Navbar from '../../components/navbar/Navbar'
 function Home() {
     const [searchQuery, setSearchQuery] = useState("india")
     const [news, setNews] = useState([])
@@ -38,6 +39,7 @@ function Home() {
 
     return (
         <>
+            <Navbar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
             <div className='container mt-5'>
                 <div className='row justify-content-center'>
                     {news.map((newsArticles, i) => {
