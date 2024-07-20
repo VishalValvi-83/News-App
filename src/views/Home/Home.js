@@ -18,21 +18,24 @@ function Home() {
 
 
     return (
-        <div>
-            {news.map((newsArticles, i) => {
-                const { author, description, url, content, title, urlToImage, publishedAt } = newsArticles
-
-                return (
-                    <div className="news-card container ">
-                        <div className='row'>
+        <div className='container'>
+            <div className='row justify-content-center'>
+                {news.map((newsArticles, i) => {
+                    const { author, description, url, content, title, urlToImage, publishedAt } = newsArticles
+                    return (
+                        <>
+                        <div className='col-xl-8 col-lg-6 col-sm-12'>
                             <Articles key={i} author={author}
                                 description={description} url={url} content={content} title={title} urlToImage={urlToImage} publishedAt={publishedAt}
                             />
                         </div>
-                    </div>
-                )
-            })}
+                        <hr/>
+                        </>
+                    )
+                })}
+            </div>
         </div>
+
     )
 }
 
